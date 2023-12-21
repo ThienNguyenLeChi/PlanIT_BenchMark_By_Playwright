@@ -1,0 +1,13 @@
+{
+  "name": "PlanIT_BenchMark_By_Playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ThienNguyenLeChi/PlanIT_BenchMark_By_Playwright.git",
+  "author": "linhhuynhcamis <145654620+linhhuynhcamis@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.5"
+  },
+  "scripts": {}
+}

@@ -1,0 +1,41 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://stage.attainia.cloud/login');
+  await page.getByLabel('Email').click();
+  await page.getByLabel('Email').fill('vincent.nguyen@tpssoft.com');
+  await page.getByLabel('Email').press('Tab');
+  await page.getByLabel('Password').fill('1234@Tps');
+  await page.getByLabel('Password').press('Enter');
+  await page.locator('[data-test="avatar"]').click();await page.getByRole('tab', { name: 'Items' }).click();
+  await page.getByText('PlanIT-Benchmarks').click();
+  await page.getByLabel('Password').click();
+  await page.getByLabel('Password').fill('1234@Tps');
+  await page.getByLabel('Password').press('Enter');
+  await page.getByText('domain Projects').click();
+
+  await page.locator('[data-test="Projects List"]').click();
+  await page.locator('[data-test="projectsListSearch"]').click();
+  const startTime = Date.now();
+
+      // GET API Response when selecting Booking Category Option
+      const [todaysActivityResponse] = await Promise.all([
+        // Waiting for the API response with specific criteria
+        page.waitForResponse(res => res.status() === 200
+          && res.url() === '/api\/projects\/.*/'
+          ),
+          await page.locator('[data-test="projectsListSearch"]').fill('PLANIT'),
+,
+      ]);
+      const endTime = Date.now();
+      const responseTime = endTime - startTime;
+      console.log(`Response time: ${responseTime} milliseconds`);
+      expect(page).toHaveURL(/projects/s)
+//   await page.locator('[data-test="projectsListSearch"]').fill('PLANIT');
+//   await page.getByRole('row', { name: '󰓎 PlanIT-Benchmarks' }).locator('[data-test="projectsListProjectName"]').click();
+//   await page.getByRole('tab', { name: 'Buildings' }).click();
+//   await page.getByRole('tab', { name: 'Levels' }).click();
+//   await page.getByRole('tab', { name: 'Departments' }).click();
+//   await page.getByRole('tab', { name: 'Rooms' }).click();
+//   await page.getByRole('tab', { name: 'Items' }).click();
+});
